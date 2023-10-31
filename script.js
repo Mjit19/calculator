@@ -1,4 +1,19 @@
 let num1, num2, operator;
+const buttons = document.querySelectorAll('button');
+let display = document.querySelector('#display');
+
+buttons.forEach(digit => {
+    digit.addEventListener('click', (event) => {
+        const target = event.target;
+        display.textContent = digit.textContent;
+        console.log(target);
+    })
+});
+
+const zero = document.querySelector('#zero');
+
+console.log(zero.textContent);
+console.log(typeof (Number(zero.textContent)));
 
 function operate(sign, a, b) {
     if (sign == "+") {

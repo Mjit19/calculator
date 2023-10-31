@@ -9,10 +9,14 @@
 
 #display {
     height: 100px;
+    display: flex;
     background-color: rgb(240, 240, 240);
     flex: 1;
     margin-bottom: 20px;
     border-radius: 5px;
+    font-size: 50px;
+    justify-content: end;
+    align-items: end;
 }
 
 #keys {
@@ -28,6 +32,10 @@ button {
     background-color: rgb(98, 199, 240);
     font-size: 20px;
     
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 #equals {
