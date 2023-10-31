@@ -34,7 +34,7 @@ button {
     background-color: rgb(70, 233, 70);
 }
 
-#equals,
+#add,
 #zero {
     width: 200px;
 }
@@ -43,6 +43,7 @@ button {
     background-color: rgb(245, 90, 90);
 }
 
-.operator {
+.operator,
+#add {
     background-color: rgb(238, 170, 44);
 }
