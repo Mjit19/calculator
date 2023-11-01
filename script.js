@@ -6,6 +6,7 @@ let lowerDisplay = document.querySelector('#lower-display');
 let upperDisplay = document.querySelector('#upper-display');
 let equals = document.querySelector('#equals');
 const clear = document.querySelector('#clear');
+const point = document.querySelector('#point');
 
 digits.forEach(digit => {
     digit.addEventListener('click', () => {
@@ -54,6 +55,12 @@ clear.addEventListener('click', () => {
     lowerDisplay.textContent = "";
     num1 = undefined, num2 = undefined, operator = undefined;
 })
+
+point.addEventListener('click', () => {
+    if (!lowerDisplay.textContent.includes('.')) {
+        lowerDisplay.textContent += '.';
+    }
+});
 
 function operate(sign, a, b) {
     if (sign == "+") {

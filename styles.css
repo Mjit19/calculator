@@ -37,7 +37,8 @@ button {
     font-size: 20px;
 }
 
-.digit {
+.digit,
+#point {
     background-color: rgb(98, 199, 240);
 }
 
