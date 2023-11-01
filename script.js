@@ -14,7 +14,9 @@ digits.forEach(digit => {
             lowerDisplay.textContent = '';
             upperDisplay.textContent = '';
         }
-        lowerDisplay.textContent += digit.textContent;
+        if (lowerDisplay.textContent != '0' || digit.textContent != '0'){
+            lowerDisplay.textContent += digit.textContent;
+        }
     })
 });
 
