@@ -23,37 +23,38 @@ operators.forEach(sign => {
         if (lowerDisplay.textContent === "Error") {
             return lowerDisplay.textContent = "Error";
         }
-        upperDisplay.textContent += lowerDisplay.textContent + " " + sign.textContent + " ";
         if (lowerDisplay.textContent != '') {
             num1 = Number(lowerDisplay.textContent);
         }
         operator = sign.textContent;
+        upperDisplay.textContent = num1 + " " + operator + " ";
         lowerDisplay.textContent = "";
     })
 })
 
 equals.addEventListener('click', () => {
-    if (num1 != undefined && lowerDisplay.textContent != '') {
+    if (num1 != null && lowerDisplay.textContent != '') {
         num2 = Number(lowerDisplay.textContent);
     }
-    if(num1 === undefined || num2 === undefined) {
+    if(num2 == null) {
         upperDisplay.textContent = '';
+        num1 = null;    // Sets num1 to null if num1 has value
         return lowerDisplay.textContent = "Error";
     }
 
-    if (operator === "/" && num2 === 0) {
+    if (operator == "/" && num2 == 0) {
         return lowerDisplay.textContent = "Lol nub!"
     }
     upperDisplay.textContent += " " + num2 + " = ";
     lowerDisplay.textContent = Math.round(operate(operator, num1, num2) * 100) / 100;
-    num1 = undefined, num2 = undefined, operator = undefined;
+    num1 = null, num2 = null, operator = null;
     
 })
 
 clear.addEventListener('click', () => {
     upperDisplay.textContent = "";
     lowerDisplay.textContent = "";
-    num1 = undefined, num2 = undefined, operator = undefined;
+    num1 = null, num2 = null, operator = null;
 })
 
 point.addEventListener('click', () => {
