@@ -19,6 +19,9 @@ digits.forEach(digit => {
 
 operators.forEach(sign => {
     sign.addEventListener('click', () => {
+        if (lowerDisplay.textContent === "Error") {
+            return lowerDisplay.textContent = "Error";
+        }
         upperDisplay.textContent += lowerDisplay.textContent + " " + sign.textContent + " ";
         if (lowerDisplay.textContent != '') {
             num1 = Number(lowerDisplay.textContent);
@@ -43,6 +46,7 @@ equals.addEventListener('click', () => {
     upperDisplay.textContent += " " + num2 + " = ";
     lowerDisplay.textContent = Math.round(operate(operator, num1, num2) * 100) / 100;
     num1 = undefined, num2 = undefined, operator = undefined;
+    
 })
 
 clear.addEventListener('click', () => {
