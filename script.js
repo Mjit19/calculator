@@ -9,6 +9,10 @@ const clear = document.querySelector('#clear');
 
 digits.forEach(digit => {
     digit.addEventListener('click', () => {
+        if(lowerDisplay.textContent === "Error") {
+            lowerDisplay.textContent = '';
+            upperDisplay.textContent = '';
+        }
         lowerDisplay.textContent += digit.textContent;
     })
 });
@@ -16,19 +20,29 @@ digits.forEach(digit => {
 operators.forEach(sign => {
     sign.addEventListener('click', () => {
         upperDisplay.textContent += lowerDisplay.textContent + " " + sign.textContent + " ";
-        num1 = Number(lowerDisplay.textContent);
+        if (lowerDisplay.textContent != '') {
+            num1 = Number(lowerDisplay.textContent);
+        }
         operator = sign.textContent;
         lowerDisplay.textContent = "";
     })
 })
 
 equals.addEventListener('click', () => {
-    num2 = Number(lowerDisplay.textContent);
-    if(num1 === undefined) {
-        lowerDisplay.textContent = "Error";
+    if (num1 != undefined && lowerDisplay.textContent != '') {
+        num2 = Number(lowerDisplay.textContent);
+    }
+    if(num1 === undefined || num2 === undefined) {
+        upperDisplay.textContent = '';
+        return lowerDisplay.textContent = "Error";
+    }
+
+    if (operator === "/" && num2 === 0) {
+        return lowerDisplay.textContent = "Lol nub!"
     }
     upperDisplay.textContent += " " + num2 + " = ";
     lowerDisplay.textContent = Math.round(operate(operator, num1, num2) * 100) / 100;
+    num1 = undefined, num2 = undefined, operator = undefined;
 })
 
 clear.addEventListener('click', () => {
