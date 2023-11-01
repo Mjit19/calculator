@@ -10,13 +10,18 @@
 #display {
     height: 100px;
     display: flex;
+    flex-direction: column;
     background-color: rgb(240, 240, 240);
     flex: 1;
     margin-bottom: 20px;
     border-radius: 5px;
     font-size: 50px;
-    justify-content: end;
+    justify-content: space-between;
     align-items: end;
+}
+
+#upper-display {
+    font-size: 25px;
 }
 
 #keys {
@@ -29,9 +34,11 @@ button {
     width: 100px;
     border-radius: 5px;
     margin: 3px 0;
-    background-color: rgb(98, 199, 240);
     font-size: 20px;
-    
+}
+
+.digit {
+    background-color: rgb(98, 199, 240);
 }
 
 button:hover {
@@ -47,7 +54,8 @@ button:hover {
     width: 200px;
 }
 
-.row1 button {
+#delete,
+#clear {
     background-color: rgb(245, 90, 90);
 }
 

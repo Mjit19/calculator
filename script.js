@@ -1,19 +1,41 @@
 let num1, num2, operator;
-const buttons = document.querySelectorAll('button');
-let display = document.querySelector('#display');
+const digits = document.querySelectorAll('.digit');
+const operators = document.querySelectorAll('.operator');
 
-buttons.forEach(digit => {
-    digit.addEventListener('click', (event) => {
-        const target = event.target;
-        display.textContent = digit.textContent;
-        console.log(target);
+let lowerDisplay = document.querySelector('#lower-display');
+let upperDisplay = document.querySelector('#upper-display');
+let equals = document.querySelector('#equals');
+const clear = document.querySelector('#clear');
+
+digits.forEach(digit => {
+    digit.addEventListener('click', () => {
+        lowerDisplay.textContent += digit.textContent;
     })
 });
 
-const zero = document.querySelector('#zero');
+operators.forEach(sign => {
+    sign.addEventListener('click', () => {
+        upperDisplay.textContent += lowerDisplay.textContent + " " + sign.textContent + " ";
+        num1 = Number(lowerDisplay.textContent);
+        operator = sign.textContent;
+        lowerDisplay.textContent = "";
+    })
+})
 
-console.log(zero.textContent);
-console.log(typeof (Number(zero.textContent)));
+equals.addEventListener('click', () => {
+    num2 = Number(lowerDisplay.textContent);
+    if(num1 === undefined) {
+        lowerDisplay.textContent = "Error";
+    }
+    upperDisplay.textContent += " " + num2 + " = ";
+    lowerDisplay.textContent = Math.round(operate(operator, num1, num2) * 100) / 100;
+})
+
+clear.addEventListener('click', () => {
+    upperDisplay.textContent = "";
+    lowerDisplay.textContent = "";
+    num1 = undefined, num2 = undefined, operator = undefined;
+})
 
 function operate(sign, a, b) {
     if (sign == "+") {
@@ -29,17 +51,17 @@ function operate(sign, a, b) {
 }
 
 function add(a, b) {
-    return (a + b).toFixed(2);
+    return a + b;
 }
 
 function subtract(a, b) {
-    return (a - b).toFixed(2);
+    return a - b;
 }
 
 function multiply(a, b) {
-    return (a * b).toFixed(2);
+    return a * b;
 }
 
 function divide(a, b) {
-    return (a / b).toFixed(2);
+    return a / b;
 }
