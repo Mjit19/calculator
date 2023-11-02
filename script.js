@@ -1,4 +1,4 @@
-let num1, num2, operator;
+let num1, num2, operator, result;
 const digits = document.querySelectorAll('.digit');
 const operators = document.querySelectorAll('.operator');
 
@@ -10,9 +10,10 @@ const point = document.querySelector('#point');
 
 digits.forEach(digit => {
     digit.addEventListener('click', () => {
-        if(lowerDisplay.textContent === "Error") {
+        if(lowerDisplay.textContent === "Error" || result != null) {
             lowerDisplay.textContent = '';
             upperDisplay.textContent = '';
+            result = null;
         }
         if (lowerDisplay.textContent != '0' || digit.textContent != '0'){
             lowerDisplay.textContent += digit.textContent;
@@ -27,6 +28,7 @@ operators.forEach(sign => {
         }
         if (lowerDisplay.textContent != '') {
             num1 = Number(lowerDisplay.textContent);
+            result = null;
         }
         operator = sign.textContent;
         upperDisplay.textContent = num1 + " " + operator + " ";
@@ -51,7 +53,8 @@ equals.addEventListener('click', () => {
         return lowerDisplay.textContent = "Error"
     }
     upperDisplay.textContent += " " + num2 + " = ";
-    lowerDisplay.textContent = Math.round(operate(operator, num1, num2) * 100) / 100;
+    result = Math.round(operate(operator, num1, num2) * 100) / 100;
+    lowerDisplay.textContent = result;
     num1 = null, num2 = null, operator = null;
     
 })
