@@ -10,6 +10,11 @@ const point = document.querySelector('#point');
 
 digits.forEach(digit => {
     digit.addEventListener('click', () => {
+        if (lowerDisplay.textContent.length >= 16) {
+            num1 = null;
+            num2 = null;
+            return lowerDisplay.textContent = "Error";
+        }
         if(lowerDisplay.textContent === "Error" || result != null) {
             lowerDisplay.textContent = '';
             upperDisplay.textContent = '';
@@ -24,6 +29,7 @@ digits.forEach(digit => {
 operators.forEach(sign => {
     sign.addEventListener('click', () => {
         if (lowerDisplay.textContent === "Error") {
+            upperDisplay.textContent = ''
             return lowerDisplay.textContent = "Error";
         }
         if (lowerDisplay.textContent != '') {
@@ -53,8 +59,13 @@ equals.addEventListener('click', () => {
         return lowerDisplay.textContent = "Error"
     }
     upperDisplay.textContent += " " + num2 + " = ";
-    result = Math.round(operate(operator, num1, num2) * 100) / 100;
-    lowerDisplay.textContent = result;
+    result = (Math.round(operate(operator, num1, num2) * 100) / 100).toString();
+    
+    if (result.length < 16) {
+        lowerDisplay.textContent = result;
+    } else {
+        lowerDisplay.textContent = "Error";
+    }
     num1 = null, num2 = null, operator = null;
     
 })
@@ -67,7 +78,7 @@ clear.addEventListener('click', () => {
 
 point.addEventListener('click', () => {
     if (!lowerDisplay.textContent.includes('.')) {
-        if (lowerDisplay.textContent == '') {
+        if (lowerDisplay.textContent == '' || lowerDisplay.textContent == "Error") {
             lowerDisplay.textContent = "0";
         }
         lowerDisplay.textContent += '.';
