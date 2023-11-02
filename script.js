@@ -45,7 +45,10 @@ equals.addEventListener('click', () => {
     }
 
     if (operator == "/" && num2 == 0) {
-        return lowerDisplay.textContent = "Lol nub!"
+        upperDisplay.textContent = '';
+        num1 = null;
+        num2 = null;
+        return lowerDisplay.textContent = "Error"
     }
     upperDisplay.textContent += " " + num2 + " = ";
     lowerDisplay.textContent = Math.round(operate(operator, num1, num2) * 100) / 100;
@@ -61,6 +64,9 @@ clear.addEventListener('click', () => {
 
 point.addEventListener('click', () => {
     if (!lowerDisplay.textContent.includes('.')) {
+        if (lowerDisplay.textContent == '') {
+            lowerDisplay.textContent = "0";
+        }
         lowerDisplay.textContent += '.';
     }
 });
