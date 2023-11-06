@@ -80,7 +80,7 @@ equals.addEventListener('click', () => {
 clear.addEventListener('click', () => {
     upperDisplay.textContent = "";
     lowerDisplay.textContent = "";
-    num1 = '', num2 = '', operator = '';
+    num1 = '', num2 = '', operator = '', result = '';
 })
 
 del.addEventListener('click', () => {
