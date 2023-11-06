@@ -7,6 +7,7 @@ let upperDisplay = document.querySelector('#upper-display');
 let equals = document.querySelector('#equals');
 const clear = document.querySelector('#clear');
 const point = document.querySelector('#point');
+const del = document.querySelector('#delete');
 
 digits.forEach(digit => {
     digit.addEventListener('click', () => {
@@ -80,6 +81,10 @@ clear.addEventListener('click', () => {
     upperDisplay.textContent = "";
     lowerDisplay.textContent = "";
     num1 = '', num2 = '', operator = '';
+})
+
+del.addEventListener('click', () => {
+    lowerDisplay.textContent = lowerDisplay.textContent.slice(0, -1);
 })
 
 point.addEventListener('click', () => {
