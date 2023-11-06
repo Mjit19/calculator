@@ -15,7 +15,7 @@ digits.forEach(digit => {
             num2 = '';
             return lowerDisplay.textContent = "Error";
         }
-        if(lowerDisplay.textContent === "Error" || result != '') {
+        if (lowerDisplay.textContent === "Error" || result != '') {
             lowerDisplay.textContent = '';
             upperDisplay.textContent = '';
             result = '';
@@ -32,9 +32,15 @@ operators.forEach(sign => {
             upperDisplay.textContent = ''
             return lowerDisplay.textContent = "Error";
         }
-        if (lowerDisplay.textContent != '') {
+        if (num1 == '' && lowerDisplay.textContent != '') {
             num1 = lowerDisplay.textContent;
             result = '';
+        } else if (num1 != '' && lowerDisplay.textContent != '') {
+            num2 = lowerDisplay.textContent;
+            result = (Math.round(operate(operator, Number(num1), Number(num2)) * 100) / 100).toString();
+            lowerDisplay.textContent = result;
+            num1 = result;
+            result = ''
         }
         operator = sign.textContent;
         upperDisplay.textContent = num1 + " " + operator + " ";
@@ -43,7 +49,7 @@ operators.forEach(sign => {
 })
 
 equals.addEventListener('click', () => {
-    if (num1 != '' && lowerDisplay.textContent != '') {
+    if (num2 == '' || (num1 != '' && lowerDisplay.textContent != '')) {
         num2 = lowerDisplay.textContent;
     }
     if(num2 == '') {
